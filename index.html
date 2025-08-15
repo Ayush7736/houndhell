@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOUNDHELL - Stop the Delhi Dog Ban</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --blood-opacity: 0;
+            --bright-color: #fff9c4;
+            --blood-color: #8a0303;
+            --accent-color: #ff6d00;
+            --text-dark: #212121;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: var(--bright-color);
+            color: var(--text-dark);
+            position: relative;
+            min-height: 100vh;
+            transition: background 0.5s ease;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(173, 0, 0, 0.8), transparent 25%),
+                radial-gradient(circle at 70% 60%, rgba(139, 0, 0, 0.7), transparent 30%),
+                radial-gradient(circle at 40% 80%, rgba(120, 0, 0, 0.6), transparent 35%);
+            opacity: var(--blood-opacity);
+            pointer-events: none;
+            z-index: -1;
+            transition: opacity 0.5s ease;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            position: relative;
+        }
+        
+        .logo-placeholder {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            background: #ffca28;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: var(--accent-color);
+            border: 4px dashed var(--accent-color);
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+            text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.7);
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--accent-color);
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .intro p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0,0,0,0.3);
+            background: #e65100;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin: 40px 0 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent-color);
+        }
+        
+        .letter-container {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 50px;
+            border: 2px solid #ffd54f;
+        }
+        
+        .letter-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .letter-header h3 {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .letter-content {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 1rem;
+            line-height: 1.8;
+            white-space: pre-line;
+        }
+        
+        .copy-btn {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: block;
+            width: 200px;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-btn:hover {
+            background: #388e3c;
+            transform: translateY(-2px);
+        }
+        
+        .copy-success {
+            text-align: center;
+            color: #388e3c;
+            font-weight: bold;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            margin-bottom: 30px;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .blood-warning {
+            text-align: center;
+            padding: 30px;
+            margin: 40px 0;
+            background: rgba(138, 3, 3, 0.15);
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: 2px dashed #8a0303;
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+        
+        .image-card {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        .image-preview {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .image-download {
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .download-btn {
+            background: #2196f3;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            background: #1976d2;
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            background: rgba(0, 0, 0, 0.1);
+            border-top: 3px solid var(--accent-color);
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .letter-content {
+                padding: 15px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-placeholder">
+                <i class="fas fa-paw"></i>
+            </div>
+            <h1>HOUNDHELL</h1>
+            <div class="tagline">DELHI'S CANINE CRUELTY ARCHIVE | DEMAND HUMANE POLICY</div>
+        </header>
+        
+        <section class="intro">
+            <p>This is the frontline of resistance against the brutal dog ban in Delhi NCR. Innocent lives - both human and canine - are being destroyed by this heartless policy. We've documented the atrocities and created resources to make your voice heard.</p>
+            <p>Every scroll downward reveals more blood spilled by this cruel policy. The red you see represents the lives lost - protesters beaten by police, dogs slaughtered by authorities. This is HOUNDHELL. And we won't stop until it ends.</p>
+            <a href="#letter" class="btn">COPY OFFICIAL LETTER</a>
+            <a href="#posters" class="btn">DOWNLOAD POSTERS</a>
+        </section>
+        
+        <section id="letter">
+            <h2 class="section-title">OFFICIAL PROTEST LETTER</h2>
+            <div class="letter-container">
+                <div class="letter-header">
+                    <h3><i class="fas fa-envelope"></i> URGENT: SCIENTIFIC ANIMAL WELFARE POLICY DEMAND</h3>
+                </div>
+                <div class="letter-content" id="letterText">
+To:
+
+Prime Minister of India
+
+Chief Justice of India
+
+Minister of Environment, Forest & Climate Change
+
+Minister of Health & Family Welfare
+
+Minister of Finance
+
+All State Chief Ministers
+
+Cc:
+
+Animal Welfare Board of India
+
+National Human Rights Commission
+
+WHO India Representative
+
+I. EXECUTIVE SUMMARY
+India stands at a crossroads in animal welfare policy. The proposed breed bans and mass sheltering of strays are:
+
+Scientifically Invalid (breed-neutral aggression proven by ICAR/NIH studies)
+
+Economically Catastrophic (₹15,000+ crore shelter costs vs. ₹1,000/dog ABC)
+
+Ecologically Dangerous (risks rat/snake infestations)
+
+Legally Untenable (violates PCA Act, ABC Rules, Article 51A(g))
+
+Socially Counterproductive (destroys community-dog bonds that enhance safety)
+
+We present a 10-Point Roadmap combining WHO best practices with Indian cultural ethos.
+
+II. WHY CURRENT PROPOSALS FAIL?
+A. Breed Bans: Debunked by Science
+Genetic Evidence: US NIH study of 20,000 dogs shows aggression is 90% training-dependent, not breed-linked.
+
+Indian Context: Mumbai SPCA data reveals "banned" breeds like Rottweilers show 89% lower aggression when properly trained.
+
+B. Mass Sheltering: Mathematical Impossibility
+Parameter	Requirement	Current Capacity	Deficit
+Nationwide Strays	62 million	5,000 shelter spots	99.99%
+Delhi-NCR Shelter Cost	₹15,000 crore (1M dogs)	₹50 crore allocated	300x gap
+(Sources: AWBI 2025, Economic Times)
+
+C. Public Health Disaster
+Rabies Resurgence: Removing vaccinated street dogs allows unvaccinated strays to dominate, risking 20,000+ deaths/year (NCDC projection).
+
+Shelter-Borne Diseases: Overcrowding causes 42% parvovirus/leptospirosis rates (AIIMS 2024).
+
+III. 10-POINT ACTION PLAN
+1. Nationwide CNVR (WHO Gold Standard)
+Target: Sterilize/vaccinate 70% strays in 5 years (requires 10,000 mobile clinics).
+
+Cost: ₹1,000/dog vs. ₹50,000 for sheltering. Savings: ₹4,900 crore/year.
+
+2. Aggression-Tiered Response
+Dog Type	Protocol	Facility Needed
+Normal Strays	CNVR + Return	Mobile ABC Vans
+Documented Aggressive	60-day rehab → Release/Adoption	Municipal Rehab Centers
+Rabid/Irredeemable	Humane euthanasia (OIE Standard)	Designated Vet Clinics
+3. Economic Reforms
+Luxury Breed Tax: 30% GST on imported breeds to fund ABC.
+
+Pet Abandonment Fines: ₹50,000/incident (UK model).
+
+4. Urban Ecology Integration
+Waste Management: Seal garbage bins (cuts stray food by 40%).
+
+Green Corridors: RFID-tagged dogs in designated zones.
+
+5. Child Safety Focus
+School-Zone Shields: Priority ABC within 500m of all schools.
+
+NCERT Curriculum: "Safe Interaction with Dogs" modules.
+
+6. Cultural Preservation
+Temple Feeding Zones: Legally protect "Ahara Kshetrams" near religious sites.
+
+Community Guardians: ₹1,500/month stipends for registered caretakers.
+
+7. Legal Enforcement
+PCA Act Amendments: Penalize abandonment, not community dogs.
+
+Feeder Protection: Enforce Delhi HC's 2021 ruling nationwide.
+
+8. Global Alignment
+WHO/OIE Compliance: Adopt CNVR as only rabies control method.
+
+Netherlands Model: Zero strays via ABC + waste management.
+
+9. Municipal Empowerment
+Microchipping Database: Track all sterilized dogs (₹200/dog).
+
+Rapid Response Units: Resolve complaints in 24hrs (Indore model).
+
+10. Research & Innovation
+ICAR Breeding Registry: Curb puppy mills.
+
+AI Monitoring: Drones for stray population mapping.
+
+IV. WHY THIS WORKS? PROVEN SUCCESSES
+A. Indian Case Studies
+Jaipur: 50% stray reduction via ABC (2010–2023).
+
+Goa: 70% rabies vaccination coverage through PPP clinics.
+
+B. Global Evidence
+Country	Policy	Result
+Netherlands	CNVR + Waste Mgmt	0 strays since 2011
+Spain	Reversed Breed Ban	0% bite reduction post-ban
+V. COST OF INACTION
+Human Lives: Rabies deaths rebound to 20,000+/year.
+
+Economy: ₹12,000 crore/year in healthcare + productivity losses.
+
+Ecology: Rat/snake infestations akin to Paris' 1880s plague.
+
+VI. URGENT DEMANDS
+Immediately halt breed ban/shelter proposals.
+
+Allocate ₹1,000 crore for National ABC Mission.
+
+Form Inter-Ministerial Task Force reporting to PMO.
+
+"Compassion and science must guide policy – not fear and misinformation."
+
+Attachments:
+
+WHO Guidelines on CNVR (2023)
+
+NITI Aayog Cost-Benefit Analysis
+
+Model Municipal ABC Bylaw Draft
+
+Signed by:
+[Your Name]
+[Organization]
+[Contact]
+                </div>
+                <button id="copyButton" class="copy-btn">Copy to Clipboard</button>
+                <div id="copySuccess" class="copy-success">Letter copied to clipboard!</div>
+            </div>
+        </section>
+        
+        <section id="media">
+            <h2 class="section-title">DOCUMENTARY EVIDENCE</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/tsGietF1O5o?si=R-EW4hoGD0k-4hE9" allowfullscreen></iframe>
+            </div>
+            
+            <div class="blood-warning">
+                <i class="fas fa-tint" style="color: #8a0303; font-size: 2rem; margin-bottom: 15px;"></i>
+                <p>Every drop of red represents a dog killed or protester injured.<br>This blood is on the government's hands. ACT NOW.</p>
+            </div>
+            
+            <h2 class="section-title" id="posters">DOWNLOAD & SHARE THESE POSTERS</h2>
+            <div class="image-grid">
+                <div class="image-card">
+                    <div class="image-preview" style="background-image: url('https://i.ibb.co/LdWZxWg9/9b4611e9-a1d5-4cd0-9c68-f19c8373eaf2.jpg')"></div>
+                    <div class="image-download">
+                        <a href="https://i.ibb.co/LdWZxWg9/9b4611e9-a1d5-4cd0-9c68-f19c8373eaf2.jpg" class="download-btn" download="HOUNDHELL-Poster-1.jpg">Download Poster 1</a>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <div class="image-preview" style="background-image: url('https://i.ibb.co/s9zT1MHW/29557a6d-36fe-432a-81f3-d6ed2919e00a.jpg')"></div>
+                    <div class="image-download">
+                        <a href="https://i.ibb.co/s9zT1MHW/29557a6d-36fe-432a-81f3-d6ed2919e00a.jpg" class="download-btn" download="HOUNDHELL-Poster-2.jpg">Download Poster 2</a>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <div class="image-preview" style="background-image: url('https://i.ibb.co/q3ks0QJn/Lucid-Origin-A-sad-but-determinedlooking-dog-Golden-Retriever-I-1.jpg')"></div>
+                    <div class="image-download">
+                        <a href="https://i.ibb.co/q3ks0QJn/Lucid-Origin-A-sad-but-determinedlooking-dog-Golden-Retriever-I-1.jpg" class="download-btn" download="HOUNDHELL-Poster-3.jpg">Download Poster 3</a>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <div class="image-preview" style="background-image: url('https://i.ibb.co/svDmV7Mw/dog.jpg')"></div>
+                    <div class="image-download">
+                        <a href="https://i.ibb.co/svDmV7Mw/dog.jpg" class="download-btn" download="HOUNDHELL-Poster-4.jpg">Download Poster 4</a>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <div class="image-preview" style="background-image: url('https://i.ibb.co/pS08P5d/dogo.jpg')"></div>
+                    <div class="image-download">
+                        <a href="https://i.ibb.co/pS08P5d/dogo.jpg" class="download-btn" download="HOUNDHELL-Poster-5.jpg">Download Poster 5</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>HOUNDHELL | Delhi's Canine Cruelty Archive</p>
+            <p>Every share, every email, every story brings us closer to ending this brutality.</p>
+            <p>#StopDelhiDogBan #HoundHell #CanineLivesMatter</p>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Blood effect on scroll
+            const body = document.body;
+            
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY;
+                const windowHeight = window.innerHeight;
+                const bodyHeight = document.body.scrollHeight;
+                
+                const scrollPercent = scrollPosition / (bodyHeight - windowHeight);
+                document.documentElement.style.setProperty('--blood-opacity', scrollPercent * 0.8);
+                
+                if (scrollPercent > 0.3) body.style.background = '#ffecb3';
+                if (scrollPercent > 0.6) body.style.background = '#ffe082';
+            });
+            
+            // Enhanced copy functionality
+            const copyButton = document.getElementById('copyButton');
+            const copySuccess = document.getElementById('copySuccess');
+            const letterText = document.getElementById('letterText');
+            
+            copyButton.addEventListener('click', async function() {
+                try {
+                    // Create range and select the text
+                    const range = document.createRange();
+                    range.selectNode(letterText);
+                    window.getSelection().removeAllRanges();
+                    window.getSelection().addRange(range);
+                    
+                    // Execute copy command
+                    const successful = document.execCommand('copy');
+                    window.getSelection().removeAllRanges();
+                    
+                    if (successful) {
+                        copySuccess.style.display = 'block';
+                        copyButton.textContent = 'Copied!';
+                        copyButton.style.background = '#2e7d32';
+                        
+                        setTimeout(() => {
+                            copySuccess.style.display = 'none';
+                            copyButton.textContent = 'Copy to Clipboard';
+                            copyButton.style.background = '#4caf50';
+                        }, 3000);
+                    } else {
+                        throw new Error('Copy command failed');
+                    }
+                } catch (err) {
+                    console.error('Fallback copy failed:', err);
+                    // Fallback to modern clipboard API
+                    try {
+                        await navigator.clipboard.writeText(letterText.textContent);
+                        copySuccess.style.display = 'block';
+                        copyButton.textContent = 'Copied!';
+                        copyButton.style.background = '#2e7d32';
+                        
+                        setTimeout(() => {
+                            copySuccess.style.display = 'none';
+                            copyButton.textContent = 'Copy to Clipboard';
+                            copyButton.style.background = '#4caf50';
+                        }, 3000);
+                    } catch (err) {
+                        console.error('Clipboard API failed:', err);
+                        copyButton.textContent = 'Error Copying';
+                        copyButton.style.background = '#f44336';
+                        setTimeout(() => {
+                            copyButton.textContent = 'Copy to Clipboard';
+                            copyButton.style.background = '#4caf50';
+                        }, 2000);
+                    }
+                }
+            });
+            
+            // Force download for images (for browsers that don't respect download attribute)
+            document.querySelectorAll('.download-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    // Modern browsers will handle the download attribute
+                    // This is just tracking
+                    console.log('Download initiated:', this.getAttribute('download'));
+                });
+            });
+        });
+    </script>
+</body>
+</html>
